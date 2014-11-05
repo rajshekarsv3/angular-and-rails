@@ -1,0 +1,16 @@
+<% if can? :has_super_user_role ,@user %>
+<p>Hi Super User</p>
+
+
+<% end %>
+<% if can? :has_guest_role ,@user %>
+<p>Bye </p>
+<% end %>
+
+<% if can? :has_user_creation_role ,@user %>
+<p>Create User </p>
+<% end %>
+
+<% if cannot? :has_guest_role,@user %>
+<%= link_to 'Sign_out' , destroy_user_session_path, method: :delete %>
+<% end %>
